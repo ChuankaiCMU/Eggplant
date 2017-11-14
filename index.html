@@ -8,13 +8,15 @@
 	border: 1px solid #000;
 	background-size:100% 100%;
 	-moz-background-size:100% 100%;
+	position: absolute;
+	margin:auto;
 }
 
 .gridcell {
 }
 
 .ship {
-    background-image: url("./Spaceship_pixel.png");
+    background-image: url("./Spaceship.gif_c200");
 	background-color: transparent;
 	background-size:100% 100%;
 	-moz-background-size:100% 100%;
@@ -31,26 +33,26 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
-var griddim = 50;
+var griddim = 100;
 var visible_height = 6;
 
 var board = [
-[0, 0, 0, 0, 0],
-[0, 1, 0, 1, 1],
-[0, 0, 0, 0, 1],
-[0, 0, 0, 0, 0]
-[0, 0, 0, 0, 0],
-[0, 0, 0, 1, 1],
-[0, 0, 0, 0, 1],
-[0, 0, 0, 0, 0]
-[0, 0, 0, 0, 0],
-[0, 0, 0, 1, 1],
-[0, 0, 0, 0, 1],
-[0, 0, 0, 0, 0]
-[0, 0, 0, 0, 0],
-[0, 0, 0, 1, 1],
-[0, 0, 0, 0, 1],
-[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1],
+[0, 0, 0, 1, 1, 0],
+[0, 0, 0, 0, 1, 0],
+[0, 1, 0, 0, 0, 1]
+[0, 0, 1, 0, 0, 1],
+[0, 0, 0, 1, 0, 0],
+[0, 1, 0, 0, 1, 0],
+[1, 0, 0, 0, 0, 1]
+[0, 0, 1, 0, 0, 1],
+[0, 0, 0, 1, 1, 0],
+[0, 0, 0, 0, 0, 1],
+[0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 0],
+[1, 0, 0, 1, 0, 1],
+[0, 0, 0, 0, 1, 0],
+[1, 0, 0, 0, 0, 1]
 ];
 
 var visible_width = board[0].length;
@@ -124,8 +126,15 @@ function update() {
 
 			if(board[y][x] == 0) {
 				$("#cell_" + x + "_" + ry).css("background-color", "transparent");
+				$("#cell_" + x + "_" + ry).css("background-image", "none");
+
+
 			} else {
-				$("#cell_" + x + "_" + ry).css("background-image", "./Spaceship_pixel.png","background-color", "blue");
+				$("#cell_" + x + "_" + ry).css("background-image", "url(./Monster.gif)");
+				$("#cell_" + x + "_" + ry).css("background-color", "black");
+				$("#cell_" + x + "_" + ry).css("background-size", "100% 100%");
+				$("#cell_" + x + "_" + ry).css("-moz-background-size", "100% 100%");
+
 			}
 		}
 	}
@@ -134,19 +143,27 @@ function update() {
 
 	console.log("#cell_" + ship_location + "_" + (visible_height-1) + "||" + $("#cell_" + ship_location + "_" + (visible_height-1)).css("background-color"));
 
-	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-color") == "rgb(0, 0, 255)") {
-		gameover();
+	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-color") == "rgb(0, 0, 0)"&& total_reward >= 0.01) {
+		gameover();  //Fixed the problem that if the start is on the monster, the game will immediately over
 	}
-
+    if (total_reward < 0.1){
 	total_reward += reward_per_turn;
 	total_reward = Math.round(total_reward * 1000)/1000.0;
 	$(".score").html("$" + total_reward);
+	}
+	if (total_reward == 0.1){
+	win();
+	}
 }
 
 function gameover() {
 	clearInterval(_interval);
 
 	alert("GAME OVER MAN!");
+}
+function win(){
+    clearInterval(_interval);
+    alert("Congratulations!");
 }
 
 </script>
