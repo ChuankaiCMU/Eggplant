@@ -4,6 +4,7 @@
 <style>
 .board {
     background-image: url("./sky_image.jpg");
+	background-color: #DDD;
 	border: 1px solid #000;
 }
 
@@ -117,7 +118,7 @@ function update() {
 			var ry = visible_height-i;
 
 			if(board[y][x] == 0) {
-				$("#cell_" + x + "_" + ry).css();
+				$("#cell_" + x + "_" + ry).css("background-color", "transparent");
 			} else {
 				$("#cell_" + x + "_" + ry).css("background-color", "blue");
 			}
