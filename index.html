@@ -143,9 +143,9 @@ function update() {
 
 	$(".ship").css("left", (ship_location*griddim)+"px");
 
-	console.log("#cell_" + ship_location + "_" + (visible_height-1) + "||" + $("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image"));
+	console.log("#cell_" + ship_location + "_" + (visible_height-1) + "||" + $("#cell_" + ship_location + "_" + (visible_height-1)).css("background-color"));
 
-	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image") ==  "Monster.gif" && total_reward >= 0.01) {
+	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-color") ==  "rgb(0, 0, 0)" && total_reward >= 0.01) {
 		gameover();  //Fixed the problem that if the start is on the monster, the game will immediately over
 	}
     if (total_reward < 0.1){
@@ -168,7 +168,11 @@ function win(){
     alert("Congratulations! You've survived to the last second!");
 }
 
+
 </script>
+    <form id="mturk_form">
+<input id="score" type="score" name="score"></p>
+</form>
 </head>
 <body>
 
