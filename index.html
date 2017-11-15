@@ -148,7 +148,7 @@ function update() {
 
 	console.log("#cell_" + ship_location + "_" + (visible_height-1) + "||" + $("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image"));
 
-	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image") ==  "url(./Monster.gif)" && total_reward >= 0.01) {
+	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image") ==  "url(https://chuankaicmu.github.io/Eggplant/Monster.gif)" && total_reward >= 0.01) {
 		gameover();  //Fixed the problem that if the start is on the monster, the game will immediately over
 	}
     if (total_reward < 0.1){
