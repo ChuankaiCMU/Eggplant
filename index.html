@@ -155,6 +155,7 @@ function update() {
 
 	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image") == 'url("https://chuankaicmu.github.io/Eggplant/Monster.gif")' && total_reward >= 0.005) {
 		gameover();  //Fixed the problem that if the start is on the monster, the game will immediately over
+		window.close()
 	}
     if (total_reward < 0.1){
 	total_reward += reward_per_turn;
@@ -163,6 +164,7 @@ function update() {
 	}
 	if (total_reward == 2){
 	win();
+	window.close();
 	}
 }
 
