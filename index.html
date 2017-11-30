@@ -16,7 +16,7 @@
 }
 
 .ship {
-    background-image: url("./Spaceship.gif_c200");
+    background-image: url("./UFO.gif");
 	background-color: transparent;
 	background-size:100% 100%;
 	-moz-background-size:100% 100%;
@@ -32,11 +32,6 @@
 }
 </style>
     <script src="mturk.js"></script>
-<div style="text-align: center; ">
-    <h2>This game could only be played on the website: </h2>
-    <h2>https://chuankaicmu.github.io/Eggplant/</h2>
-    <h2>Please go to the website to play, otherwise the game won't stop :) </h2>
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
@@ -114,7 +109,7 @@ $(document).ready(function() {
   			if(ship_location >= visible_width) ship_location = 0;
 		}
 	});
-	alert("If you're ready, click on the button to start!\nWarning: The game could only be played on the website:\nhttps://chuankaicmu.github.io/Eggplant/");
+	alert("If you're ready, click on the button to start!");
 
 
 	_interval = setInterval(function() {
@@ -153,7 +148,7 @@ function update() {
 
 	console.log("#cell_" + ship_location + "_" + (visible_height-1) + "||" + $("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image"));
 
-	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image") == 'url("https://chuankaicmu.github.io/Eggplant/Monster.gif")' && total_reward >= 0.005) {
+	if($("#cell_" + ship_location + "_" + (visible_height-1)).css("background-image") != 'none' && total_reward >= 0.005) {
 		gameover();  //Fixed the problem that if the start is on the monster, the game will immediately over
 		window.close()
 	}
@@ -162,7 +157,7 @@ function update() {
 	total_reward = Math.round(total_reward * 1000)/1000.0;
 	$(".score").html("$" + total_reward);
 	}
-	if (total_reward == 2){
+	if (total_reward == 0.1){
 	win();
 	window.close();
 	}
